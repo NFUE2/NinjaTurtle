@@ -7,6 +7,7 @@ public class Card : MonoBehaviour
 
     public GameObject front;
     public GameObject back;
+    public GameObject clickBack;
     public Animator anim;
 
    public SpriteRenderer frontImage;
@@ -49,7 +50,6 @@ public class Card : MonoBehaviour
             GameManager.Instance.secondCard = this;
             GameManager.Instance.Matched();
         }
-       
     }
 
     public void DestroyCard()
@@ -71,6 +71,6 @@ public class Card : MonoBehaviour
     {
         anim.SetBool("isOpen", false);
         front.SetActive(false);
-        back.SetActive(true);
+        clickBack.SetActive(true);
     }
 }

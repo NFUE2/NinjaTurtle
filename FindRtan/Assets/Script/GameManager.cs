@@ -5,18 +5,19 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
- public static GameManager Instance;
+    public static GameManager Instance;
 
- public Card firstCard;
- public Card secondCard;
+    public Card firstCard;
+    public Card secondCard;
 
- public Text timeTxt;
- public GameObject endTxt;
+    public Text timeTxt;
+    public GameObject endTxt;
 
- AudioSource audioSource;
- public AudioClip clip;
+    AudioSource audioSource;
+    public AudioClip clip;
 
- public int cardCount = 0;
+    public int cardCount = 0;
+
 
     float time = 0.0f;
 
