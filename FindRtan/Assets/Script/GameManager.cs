@@ -14,9 +14,20 @@ public class GameManager : MonoBehaviour
     public GameObject endTxt;
     public Animator matchFailTxt;
 
+<<<<<<< Updated upstream
     public Text countTxt;
 
     public GameObject endTitle;
+=======
+    public Animator matchTrueTxt1;
+    public Animator matchTrueTxt2;
+    public Animator matchTrueTxt3;
+    public Animator matchTrueTxt4;
+    public Animator matchTrueTxt5;
+    public Animator matchTrueTxt6;
+    public Animator matchTrueTxt7;
+    public Animator matchTrueTxt8;
+>>>>>>> Stashed changes
 
 
     AudioSource audioSource;
@@ -74,7 +85,40 @@ public class GameManager : MonoBehaviour
        {
           audioSource.PlayOneShot(clip);
 
-         firstCard.DestroyCard();
+            if (firstCard.idx == 1)
+            {
+                matchTrueTxt1.SetTrigger("True");
+            }
+            if (firstCard.idx == 2)
+            {
+                matchTrueTxt2.SetTrigger("True");
+            }
+            if (firstCard.idx == 3)
+            {
+                matchTrueTxt3.SetTrigger("True");
+            }
+            if (firstCard.idx == 4)
+            {
+                matchTrueTxt4.SetTrigger("True");
+            }
+            if (firstCard.idx == 5)
+            {
+                matchTrueTxt5.SetTrigger("True");
+            }
+            if (firstCard.idx == 6)
+            {
+                matchTrueTxt6.SetTrigger("True");
+            }
+            if (firstCard.idx == 7)
+            {
+                matchTrueTxt7.SetTrigger("True");
+            }
+            if (firstCard.idx == 0)
+            {
+                matchTrueTxt8.SetTrigger("True");
+            }
+
+                firstCard.DestroyCard();
          secondCard.DestroyCard();
          cardCount -= 2;
          if(cardCount == 0)
