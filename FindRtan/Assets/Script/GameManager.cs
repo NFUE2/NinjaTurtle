@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
     public GameObject endTxt;
     public Animator matchFailTxt;
 
+    public Text countTxt;
+
+    public GameObject endTitle;
+
 
     AudioSource audioSource;
     public AudioClip clip;
@@ -22,6 +26,8 @@ public class GameManager : MonoBehaviour
     private bool soundPlayed = false;
 
     public int cardCount = 0;
+
+    public int count = 0;
 
     float time = 0.0f;
 
@@ -56,7 +62,7 @@ public class GameManager : MonoBehaviour
 
         if (time > 30f)
         {
-         
+         endTitle.SetActive(true);
           endTxt.SetActive(true);
           Time.timeScale = 0.0f;
         }
@@ -74,6 +80,7 @@ public class GameManager : MonoBehaviour
          if(cardCount == 0)
          {
             Time.timeScale = 0f;
+            endTitle.SetActive(true);
             endTxt.gameObject.SetActive(true);
          }
        }
@@ -87,6 +94,9 @@ public class GameManager : MonoBehaviour
 
         firstCard = null;
         secondCard = null;
+
+        count++;
+        countTxt.text = count.ToString();
     } 
 
     
