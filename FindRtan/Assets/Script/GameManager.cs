@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject endTitle;
 =======
+
     public Animator matchTrueTxt1;
     public Animator matchTrueTxt2;
     public Animator matchTrueTxt3;
