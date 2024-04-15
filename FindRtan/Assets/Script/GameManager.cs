@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 
  AudioSource audioSource;
  public AudioClip clip;
+ public AudioClip isWrong;
+ 
 
  public int cardCount = 0;
 
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
         timeTxt.text = time.ToString("N2");
         if(time > 30f)
         {
+         
           endTxt.SetActive(true);
           Time.timeScale = 0.0f;
         }
@@ -64,6 +67,8 @@ public class GameManager : MonoBehaviour
        }
        else
        {
+        audioSource.PlayOneShot(isWrong);
+
          firstCard.CloseCard();
          secondCard.CloseCard();
        }
@@ -71,4 +76,6 @@ public class GameManager : MonoBehaviour
         firstCard = null;
         secondCard = null;
     } 
+
+    
 }

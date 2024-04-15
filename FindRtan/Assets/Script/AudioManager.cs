@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; 
 
 public class AudioManager : MonoBehaviour
 {
@@ -8,7 +9,8 @@ public class AudioManager : MonoBehaviour
 
     AudioSource audioSource;
     public AudioClip clip;
-
+    
+   
     private void Awake()
     {
         if(Instance == null)
@@ -28,5 +30,9 @@ public class AudioManager : MonoBehaviour
        audioSource.clip = this.clip;
        audioSource.Play();
     }
-
+    
+   
+  
 }
+
+
