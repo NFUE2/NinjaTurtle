@@ -35,13 +35,14 @@ public class Card : MonoBehaviour
 
     public void OpenCard()
     {
-       audioSource.PlayOneShot(clip);
+        audioSource.PlayOneShot(clip);
 
-       anim.SetBool("isOpen", true);
-       front.SetActive(true);
-       back.SetActive(false);
+        anim.SetBool("isOpen", true);
+        front.SetActive(true);
+        back.SetActive(false);
+        clickBack.SetActive(false);
 
-        if(GameManager.Instance.firstCard == null )
+        if (GameManager.Instance.firstCard == null )
         {
          GameManager.Instance.firstCard = this;
         }
