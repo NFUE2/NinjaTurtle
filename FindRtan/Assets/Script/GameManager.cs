@@ -15,11 +15,13 @@ public class GameManager : MonoBehaviour
     public Animator matchFailTxt;
 
 
- AudioSource audioSource;
- public AudioClip clip;
- public AudioClip isWrong;
- 
- public int cardCount = 0;
+    AudioSource audioSource;
+    public AudioClip clip;
+    public AudioClip alert;
+    public AudioClip isWrong;
+    private bool soundPlayed = false;
+
+    public int cardCount = 0;
 
     float time = 0.0f;
 
@@ -43,7 +45,16 @@ public class GameManager : MonoBehaviour
     {
         time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
-        if(time > 30f)
+
+        if (time >= 20f && !soundPlayed)
+        {
+            timeTxt.color = Color.red;
+            audioSource.PlayOneShot(alert);
+            soundPlayed = true;
+        }
+
+
+        if (time > 30f)
         {
          
           endTxt.SetActive(true);
