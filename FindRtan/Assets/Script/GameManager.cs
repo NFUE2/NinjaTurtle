@@ -14,11 +14,9 @@ public class GameManager : MonoBehaviour
     public GameObject endTxt;
     public Animator matchFailTxt;
 
-<<<<<<< Updated upstream
     public Text countTxt;
 
     public GameObject endTitle;
-=======
 
     public Animator matchTrueTxt1;
     public Animator matchTrueTxt2;
@@ -28,7 +26,6 @@ public class GameManager : MonoBehaviour
     public Animator matchTrueTxt6;
     public Animator matchTrueTxt7;
     public Animator matchTrueTxt8;
->>>>>>> Stashed changes
 
 
     AudioSource audioSource;
