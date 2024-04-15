@@ -438,10 +438,9 @@ MonoBehaviour:
   secondCard: {fileID: 0}
   timeTxt: {fileID: 2032969687}
   endTxt: {fileID: 1667452565}
-  isWrong: {fileID: 8300000, guid: fbe8bc652edfe4418abb8585c8be64c7, type: 3}
-  gameOver: {fileID: 8300000, guid: 674e7c27f323c4e7d8b421d4644a41de, type: 3}
   matchFailTxt: {fileID: 1903834901}
-  clip: {fileID: 8300000, guid: 7a9e4796235da4c32ab9fffdcef652f9, type: 3}
+  clip: {fileID: 8300000, guid: ba1c349ea47c74b73b7d3d7bb78571a9, type: 3}
+  isWrong: {fileID: 8300000, guid: fbe8bc652edfe4418abb8585c8be64c7, type: 3}
   cardCount: 0
 --- !u!4 &1019602810
 Transform:
