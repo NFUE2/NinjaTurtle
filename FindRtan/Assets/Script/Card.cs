@@ -7,7 +7,7 @@ public class Card : MonoBehaviour
 
     public GameObject front;
     public GameObject back;
-    public GameObject clickBack;
+    //public GameObject clickBack;
     public Animator anim;
 
    public SpriteRenderer frontImage;
@@ -38,9 +38,9 @@ public class Card : MonoBehaviour
         audioSource.PlayOneShot(clip);
 
         anim.SetBool("isOpen", true);
-        front.SetActive(true);
-        back.SetActive(false);
-        clickBack.SetActive(false);
+        //front.SetActive(true);
+        //back.SetActive(false);
+        //clickBack.SetActive(false);
 
         if (GameManager.Instance.firstCard == null )
         {
@@ -71,7 +71,8 @@ public class Card : MonoBehaviour
     void CloseCardInvoke()
     {
         anim.SetBool("isOpen", false);
-        front.SetActive(false);
-        clickBack.SetActive(true);
+        back.GetComponent<SpriteRenderer>().color = new Color(0,0,0);
+        //front.SetActive(false);
+        //clickBack.SetActive(true);
     }
 }
