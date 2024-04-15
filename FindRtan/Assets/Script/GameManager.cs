@@ -5,19 +5,20 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
- public static GameManager Instance;
+    public static GameManager Instance;
 
- public Card firstCard;
- public Card secondCard;
+    public Card firstCard;
+    public Card secondCard;
 
- public Text timeTxt;
- public GameObject endTxt;
+    public Text timeTxt;
+    public GameObject endTxt;
+    public Animator matchFailTxt;
+
 
  AudioSource audioSource;
  public AudioClip clip;
  public AudioClip isWrong;
  
-
  public int cardCount = 0;
 
     float time = 0.0f;
@@ -68,7 +69,7 @@ public class GameManager : MonoBehaviour
        else
        {
         audioSource.PlayOneShot(isWrong);
-
+         matchFailTxt.SetTrigger("Fail");
          firstCard.CloseCard();
          secondCard.CloseCard();
        }
