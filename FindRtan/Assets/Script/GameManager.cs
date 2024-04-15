@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     public Text timeTxt;
     public GameObject endTxt;
+    public Animator matchFailTxt;
 
     AudioSource audioSource;
     public AudioClip clip;
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
        }
        else
        {
+         matchFailTxt.SetTrigger("Fail");
          firstCard.CloseCard();
          secondCard.CloseCard();
        }
