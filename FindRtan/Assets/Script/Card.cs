@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Card : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Card : MonoBehaviour
      public AudioClip clip;
      AudioSource audioSource;
 
+
     void Start()
     {
      audioSource = GetComponent<AudioSource>();
@@ -24,7 +26,7 @@ public class Card : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void Setting(int number)
@@ -44,12 +46,14 @@ public class Card : MonoBehaviour
 
         if (GameManager.Instance.firstCard == null )
         {
-         GameManager.Instance.firstCard = this;
+            GameManager.Instance.firstCard = this;
+            
         }
         else
         {
             GameManager.Instance.secondCard = this;
             GameManager.Instance.Matched();
+
         }
     }
 
@@ -74,4 +78,6 @@ public class Card : MonoBehaviour
         front.SetActive(false);
         clickBack.SetActive(true);
     }
+
+
 }
