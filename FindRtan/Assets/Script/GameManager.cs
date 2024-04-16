@@ -99,5 +99,5 @@ public class GameManager : MonoBehaviour
         countTxt.text = count.ToString();
     } 
 
-    
+    //test
 }
