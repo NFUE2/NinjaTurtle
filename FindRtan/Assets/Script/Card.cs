@@ -12,12 +12,14 @@ public class Card : MonoBehaviour
     public GameObject clickBack;
     public Animator anim;
 
-   public SpriteRenderer frontImage;
+    public SpriteRenderer frontImage;
 
-   public int idx = 0;
+    public int idx = 0;
 
-     public AudioClip clip;
-     AudioSource audioSource;
+    public bool isEnd { get => Vector3.Distance(transform.position, endPosition) < 0.001f; }
+
+    public AudioClip clip;
+    AudioSource audioSource;
 
     void Start()
     {
