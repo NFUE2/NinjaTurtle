@@ -80,7 +80,6 @@ public class GameManager : MonoBehaviour
        else
        {
          time += 1.5f;
-
          audioSource.PlayOneShot(isWrong);
          matchFailTxt.SetTrigger("Fail");
          firstCard.CloseCard();
