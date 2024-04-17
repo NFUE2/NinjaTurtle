@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
+    public Vector3 startPosition;
+    public Vector3 endPosition;
 
     public GameObject front;
     public GameObject back;
@@ -22,10 +24,7 @@ public class Card : MonoBehaviour
      audioSource = GetComponent<AudioSource>();
     }
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //void Update(){}
 
     public void Setting(int number)
     {
@@ -60,7 +59,8 @@ public class Card : MonoBehaviour
 
     void DestroyCardInvoke()
     {
-      Destroy(gameObject);
+        Board.Instance.cardList.Remove(this);
+        Destroy(gameObject);
     }
 
     public void CloseCard()
