@@ -27,6 +27,10 @@ public class GameManager : MonoBehaviour
     public GameObject endTitle;
 
 
+    public GameObject cardWrapper;
+    public Text countText;
+    public float countDownTimer = 5f;
+
     AudioSource audioSource;
     public AudioClip clip;
     public AudioClip alert;
@@ -73,6 +77,11 @@ public class GameManager : MonoBehaviour
          endTitle.SetActive(true);
           endTxt.SetActive(true);
           Time.timeScale = 0.0f;
+        }
+
+        if(firstCard != null)
+        {
+            ShowCountDown();
         }
     }
 
@@ -133,7 +142,7 @@ public class GameManager : MonoBehaviour
          firstCard.CloseCard();
          secondCard.CloseCard();
        }
-
+        HideCountDown();
         firstCard = null;
         secondCard = null;
 
@@ -141,5 +150,25 @@ public class GameManager : MonoBehaviour
         countTxt.text = count.ToString();
     } 
 
-    
+    public void ShowCountDown()
+    {
+        if(countDownTimer > 0f)
+        {
+            cardWrapper.SetActive(true);
+            countDownTimer -= Time.deltaTime;
+            countText.text = countDownTimer.ToString("F0");
+        }
+        else
+        {
+            HideCountDown();
+        }
+    }
+
+    public void HideCountDown()
+    {
+        cardWrapper.SetActive(false);
+        firstCard.CloseCard();
+        firstCard = null;
+        countDownTimer = 5f;
+    }
 }
