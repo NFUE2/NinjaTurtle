@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     public AudioClip clip;
     public AudioClip alert;
     public AudioClip isWrong;
+
     private bool soundPlayed = false;
 
     public int cardCount = 0;
@@ -53,6 +54,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 60;
         Time.timeScale = 1.0f;
         audioSource = GetComponent<AudioSource>();
 
@@ -61,7 +63,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
+
+        if (Board.Instance.gameStart == true)
+        {
+            time += Time.deltaTime;
+        }
         timeTxt.text = time.ToString("N2");
 
         if (time >= 20f && !soundPlayed)
@@ -74,15 +80,16 @@ public class GameManager : MonoBehaviour
 
         if (time > 30f)
         {
-         endTitle.SetActive(true);
-          endTxt.SetActive(true);
-          Time.timeScale = 0.0f;
+            endTitle.SetActive(true);
+            endTxt.SetActive(true);
+            Time.timeScale = 0.0f;
         }
 
-        if(firstCard != null)
+        if (firstCard != null)
         {
             ShowCountDown();
         }
+
     }
 
     public void Matched()

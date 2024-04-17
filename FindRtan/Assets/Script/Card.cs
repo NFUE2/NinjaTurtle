@@ -16,8 +16,6 @@ public class Card : MonoBehaviour
 
     public int idx = 0;
 
-    public bool isEnd { get => Vector3.Distance(transform.position, endPosition) < 0.001f; }
-
     public AudioClip clip;
     AudioSource audioSource;
 

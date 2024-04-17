@@ -16,9 +16,11 @@ public class Board : MonoBehaviour
     private Vector2 startPosition;
     private Vector2 endPosition;
 
+    public bool gameStart = false;
+
     int i = 0;
 
-    float moveDuration = 0.5f;
+    float moveDuration = 0.2f;
     float elapsedTime = 0f;
 
     private void Awake()
@@ -31,9 +33,6 @@ public class Board : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7 };
-        arr = arr.OrderBy(x => UnityEngine.Random.Range(0f, 7f)).ToArray();
-
         StartCoroutine("MakeCard");
     }
 
@@ -47,7 +46,7 @@ public class Board : MonoBehaviour
         for (i = 0; i < 16; i++)
         {
             Card go = Instantiate(cardPrefab);
-            var T = moveDuration;
+            var T = 1f;
 
             cardList.Add(go);
 
@@ -91,7 +90,7 @@ public class Board : MonoBehaviour
             elapsedTime = 0f;
             yield return new WaitForSeconds(T);
         }
-
+        gameStart = true;
         GameManager.Instance.cardCount = arr.Length;
     }
     public void CardMove()
@@ -99,7 +98,7 @@ public class Board : MonoBehaviour
         elapsedTime += Time.deltaTime;
 
         cardList[i].transform.position = Vector2.Lerp(cardList[i].startPosition, cardList[i].endPosition, elapsedTime / moveDuration);
-        if (elapsedTime >= moveDuration)
+        if (elapsedTime > moveDuration)
         {
             CancelInvoke("CardMove");
         }
