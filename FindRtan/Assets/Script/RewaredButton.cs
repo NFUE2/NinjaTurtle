@@ -48,10 +48,12 @@ public class RewaredButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShow
     // Implement a method to execute when the user clicks the button:
     public void ShowAd()
     {
+        SceneManager.LoadScene("MainScene"); //정상작동시 삭제
+
         // Disable the button:
-       
+
         // Then show the ad:
-        Advertisement.Show(_adUnitId, this);
+        //Advertisement.Show(_adUnitId, this); //정상작동시 주석해제
     }
  
     // Implement the Show Listener's OnUnityAdsShowComplete callback method to determine if the user gets a reward:
