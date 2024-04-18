@@ -39,14 +39,15 @@ public class Board : MonoBehaviour
 
     public IEnumerator MakeCard()
     {
-        startPosition = new Vector2(0, -5);
-
-        int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8 };
-        arr = arr.OrderBy(x => UnityEngine.Random.Range(0f, 7f)).ToArray();
         //GameManager gameManager = FindObjectOfType<GameManager>();
 
         if (level < 3)
         {
+            startPosition = new Vector2(0, -5);
+
+            int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7};
+            arr = arr.OrderBy(x => UnityEngine.Random.Range(0f, 7f)).ToArray();
+
             for (i = 0; i < 16; i++)
             {
                 Card go = Instantiate(cardPrefab);
@@ -101,9 +102,15 @@ public class Board : MonoBehaviour
                 elapsedTime = 0f;
                 yield return new WaitForSeconds(T);
             }
+            gameStart = true;
+            GameManager.Instance.cardCount = arr.Length;
         }
         else if (level == 3)
         {
+            startPosition = new Vector2(0, -5);
+
+            int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8 };
+            arr = arr.OrderBy(x => UnityEngine.Random.Range(0f, 7f)).ToArray();
             for (i = 0; i < 18; i++)
             {
                 Card go = Instantiate(cardPrefab);
@@ -170,9 +177,10 @@ public class Board : MonoBehaviour
                 elapsedTime = 0f;
                 yield return new WaitForSeconds(T);
             }
+            gameStart = true;
+            GameManager.Instance.cardCount = arr.Length;
         }
-        gameStart = true;
-        GameManager.Instance.cardCount = arr.Length;
+
     }
     public void CardMove()
     {

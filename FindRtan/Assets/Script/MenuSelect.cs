@@ -28,11 +28,6 @@ public class MenuSelect : MonoBehaviour
         {
             BlockStage3.SetActive(false);
         }
-        else
-        {
-            BlockStage2.SetActive(true);
-            BlockStage3.SetActive(true);
-        }
     }
 
     public void OpenRank()
