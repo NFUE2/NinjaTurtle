@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
         timeTxt.text = time.ToString("N2");
 
         
-            if (time >= 20f && !soundPlayed)
+            if (time >= 40f && !soundPlayed)
             {
                 timeTxt.color = Color.red;
                 audioSource.PlayOneShot(alert);
@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
             }
 
         
-        if(time>1000)
+        if(time>50)
         {
             EndGame();
         }
