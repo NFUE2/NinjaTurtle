@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,11 +8,16 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public int currectStage;            // 스테이지를 나타내는 것을 받아줌
+    public static int usingStage = 1;   // 사용가능한 스테이지
+
+    public RankRecord record;
+
     public Card firstCard;
     public Card secondCard;
 
     public Text timeTxt;
-    public GameObject endTxt;
+    public GameObject retryTxt;
     public Animator matchFailTxt;
     public Animator matchTrueTxt1;
     public Animator matchTrueTxt2;
@@ -22,9 +28,11 @@ public class GameManager : MonoBehaviour
     public Animator matchTrueTxt7;
     public Animator matchTrueTxt8;
 
-    public Text countTxt;
+    public Text tryTxt;
+    public Text totalScoreTxt;
+    public GameObject nextTxt;
 
-    public GameObject endTitle;
+    public GameObject scoreTitle;
 
 
     public GameObject cardWrapper;
@@ -40,9 +48,15 @@ public class GameManager : MonoBehaviour
 
     public int cardCount = 0;
 
-    public int count = 0;
+    int tryCount = 0;
+    int addScore = 0;
+    public int totalScore = 0;
 
     float time = 0.0f;
+
+    public int level;   // 게임 스테이지를 나타내는 int
+
+    public bool isNext; // 게임 클리어 bool
 
     private void Awake() 
     {
@@ -57,32 +71,31 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 60;
         Time.timeScale = 1.0f;
         audioSource = GetComponent<AudioSource>();
-
+        isNext = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (Board.Instance.gameStart == true)
+        if(Board.Instance.gameStart == true)
         {
             time += Time.deltaTime;
         }
+
         timeTxt.text = time.ToString("N2");
 
-        if (time >= 20f && !soundPlayed)
-        {
-            timeTxt.color = Color.red;
-            audioSource.PlayOneShot(alert);
-            soundPlayed = true;
-        }
+        
+            if (time >= 20f && !soundPlayed)
+            {
+                timeTxt.color = Color.red;
+                audioSource.PlayOneShot(alert);
+                soundPlayed = true;
+            }
 
-
-        if (time > 30f)
+        
+        if(time>1000)
         {
-            endTitle.SetActive(true);
-            endTxt.SetActive(true);
-            Time.timeScale = 0.0f;
+            EndGame();
         }
 
         if (firstCard != null)
@@ -134,11 +147,11 @@ public class GameManager : MonoBehaviour
             firstCard.DestroyCard();
          secondCard.DestroyCard();
          cardCount -= 2;
+            addScore += 10;
          if(cardCount == 0)
          {
-            Time.timeScale = 0f;
-            endTitle.SetActive(true);
-            endTxt.gameObject.SetActive(true);
+                isNext = true;
+                EndGame();
          }
        }
        else
@@ -153,8 +166,7 @@ public class GameManager : MonoBehaviour
         firstCard = null;
         secondCard = null;
 
-        count++;
-        countTxt.text = count.ToString();
+        tryCount++;
     } 
 
     public void ShowCountDown()
@@ -177,5 +189,30 @@ public class GameManager : MonoBehaviour
         firstCard.CloseCard();
         firstCard = null;
         countDownTimer = 5f;
+    }
+    public void EndGame()
+    {
+        Time.timeScale = 0.0f;
+        
+        totalScore = addScore - tryCount - (int)time;
+        tryTxt.text = tryCount.ToString();
+        totalScoreTxt.text = totalScore.ToString();
+        scoreTitle.SetActive(true);
+
+        if (isNext == true)
+        {
+            currectStage = level;
+            currectStage++;
+            if (usingStage < currectStage)
+                usingStage = currectStage;
+            nextTxt.SetActive(true);
+        }
+        else
+        {
+            retryTxt.SetActive(true);
+        }
+
+        record.Record(level, totalScore);
+        
     }
 }
