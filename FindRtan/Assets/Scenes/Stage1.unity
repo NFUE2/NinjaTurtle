@@ -2445,6 +2445,7 @@ MonoBehaviour:
   cardPrefab: {fileID: 3287741039583550966, guid: 61bb0d353cd9b4d3b998f010483c57a0, type: 3}
   cardList: []
   gameStart: 0
+  level: 1
 --- !u!1 &1633889785
 GameObject:
   m_ObjectHideFlags: 0

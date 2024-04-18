@@ -18,6 +18,7 @@ public class Board : MonoBehaviour
 
     public bool gameStart = false;
 
+    public int level;
     int i = 0;
 
     float moveDuration = 0.2f;
@@ -42,44 +43,104 @@ public class Board : MonoBehaviour
 
         int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7 };
         arr = arr.OrderBy(x => UnityEngine.Random.Range(0f, 7f)).ToArray();
+        //GameManager gameManager = FindObjectOfType<GameManager>();
 
         for (i = 0; i < 16; i++)
         {
             Card go = Instantiate(cardPrefab);
-            var T = 1f;
+            var T = 0.5f;
 
             cardList.Add(go);
-
-            if(i==0)
+            if(level == 1) 
             {
-                float x = 0;
-                float y = -2;
+                float x = (i % 4) * 1.4f - 2.1f;
+                float y = (i / 4) * 1.4f - 3.0f;
                 cardList[i].endPosition = new Vector2(x, y);
             }
-            if(0<i && i < 4)
+            else if (level == 2)
             {
-                float x = (i-2);
-                float y = -1;
-                cardList[i].endPosition = new Vector2(x, y);
-            }
-            if(3<i && i < 14)
-            {
-                float x = ((i-4)%5)-2;
-                float y = (i/9);
-                cardList[i].endPosition = new Vector2(x, y);
-            }
-            if(13 < i && i < 16)
-            {
-                if ((i % 2) == 0)
+                if (i == 0)
                 {
-                    float x = -1;
-                    float y = 2;
+                    float x = 0;
+                    float y = -2;
                     cardList[i].endPosition = new Vector2(x, y);
                 }
-                else
+                if (0 < i && i < 4)
                 {
-                    float x = 1;
-                    float y = 2;
+                    float x = (i - 2);
+                    float y = -1;
+                    cardList[i].endPosition = new Vector2(x, y);
+                }
+                if (3 < i && i < 14)
+                {
+                    float x = ((i - 4) % 5) - 2;
+                    float y = (i / 9);
+                    cardList[i].endPosition = new Vector2(x, y);
+                }
+                if (13 < i && i < 16)
+                {
+                    if ((i % 2) == 0)
+                    {
+                        float x = -1;
+                        float y = 2;
+                        cardList[i].endPosition = new Vector2(x, y);
+                    }
+                    else
+                    {
+                        float x = 1;
+                        float y = 2;
+                        cardList[i].endPosition = new Vector2(x, y);
+                    }
+                }
+            }
+            else if (level == 3)
+            {
+                if (i < 2)
+                {
+                    float x = (i % 2) * 0.9f - 2.1f;
+                    float y = -3;
+                    cardList[i].endPosition = new Vector2(x, y);
+                }
+                if (i>1&&i < 4)
+                {
+                    float x = (i % 2) * 0.9f + 1.2f;
+                    float y = -3;
+                    cardList[i].endPosition = new Vector2(x, y);
+                }
+                if (i>3&&i<6)
+                {
+                    float x = (i % 2) * 0.9f - 2.1f;
+                    float y = -2.1f;
+                    cardList[i].endPosition = new Vector2(x, y);
+                }
+                if (i>5&&i<8)
+                {
+                    float x = (i % 2) * 0.9f + 1.2f;
+                    float y = -2.1f;
+                    cardList[i].endPosition = new Vector2(x, y);
+                }
+                if (i > 7 && i < 10)
+                {
+                    float x = (i % 2) * 0.9f - 2.1f;
+                    float y = 1.2f;
+                    cardList[i].endPosition = new Vector2(x, y);
+                }
+                if (i > 9 && i < 12)
+                {
+                    float x = (i % 2) * 0.9f + 1.2f;
+                    float y = 1.2f;
+                    cardList[i].endPosition = new Vector2(x, y);
+                }
+                if (i > 11 && i < 14)
+                {
+                    float x = (i % 2) * 0.9f - 2.1f;
+                    float y = 2.1f;
+                    cardList[i].endPosition = new Vector2(x, y);
+                }
+                if (i>13&&i < 16)
+                {
+                    float x = (i % 2) * 0.9f + 1.2f;
+                    float y = 2.1f;
                     cardList[i].endPosition = new Vector2(x, y);
                 }
             }
