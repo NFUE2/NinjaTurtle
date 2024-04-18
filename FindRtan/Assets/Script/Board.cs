@@ -147,7 +147,7 @@ public class Board : MonoBehaviour
 
             cardList[i].startPosition = startPosition;
             go.GetComponent<Card>().Setting(arr[i]);
-            InvokeRepeating("CardMove", 0, Time.deltaTime);
+            InvokeRepeating("CardMove", 0, 0.01f);
             elapsedTime = 0f;
             yield return new WaitForSeconds(T);
         }
