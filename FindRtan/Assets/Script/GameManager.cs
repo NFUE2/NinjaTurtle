@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public Text tryTxt;
     public Text totalScoreTxt;
     public GameObject nextTxt;
+    public GameObject endingTxt;
 
     public GameObject scoreTitle;
 
@@ -202,10 +203,19 @@ public class GameManager : MonoBehaviour
         if (isNext == true)
         {
             currectStage = level;
+
             currectStage++;
             if (usingStage < currectStage)
                 usingStage = currectStage;
-            nextTxt.SetActive(true);
+            if(level == 3)
+            {
+                endingTxt.SetActive(true);
+            }
+            else
+            {
+                nextTxt.SetActive(true);
+            }
+            
         }
         else
         {
