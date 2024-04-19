@@ -199,10 +199,10 @@ public class GameManager : MonoBehaviour
         tryTxt.text = tryCount.ToString();
         totalScoreTxt.text = totalScore.ToString();
         scoreTitle.SetActive(true);
-
+        currectStage = level;
         if (isNext == true)
         {
-            currectStage = level;
+            
 
             currectStage++;
             if (usingStage < currectStage)
